@@ -39,28 +39,41 @@ The notebook we're using right now is *01_load_data.Rmd* and the CSV file we're 
 
 You can think of this as the **path** from *notebooks/01_load_data.Rmd* to *data/class_a.csv* and here is how it's represented.
 
-+----------------------------------------------------------------------------+-----------------------+
 | Step                                                                       | Representation        |
-+============================================================================+=======================+
+|:-----------------------------------|:-----------------------------------|
 | Full relative path from *notebooks/01_load_data.Rmd* to *data/class_a.csv* | `../data/class_a.csv` |
-+----------------------------------------------------------------------------+-----------------------+
-| 1.  Step out of the *notebooks* directory                                  | `../`                 |
-+----------------------------------------------------------------------------+-----------------------+
-| 2.  Step into the *data* directory                                         | `data/`               |
-+----------------------------------------------------------------------------+-----------------------+
-| 3.  Access *class_a.csv*                                                   | `class_a.csv`         |
-+----------------------------------------------------------------------------+-----------------------+
+| 1\. Step out of the *notebooks* directory                                  | `../`                 |
+| 2\. Step into the *data* directory                                         | `data/`               |
+| 3\. Access *class_a.csv*                                                   | `class_a.csv`         |
 
 Now that you have the path (`../data/class_a.csv`), you can use the `read_csv()` function to load the CSV file into a tibble.
 
-```{r read_data_a}
+```{r read_data_example}
 class_a_df <- read_csv("../data/class_a.csv")
 ```
 
 With the data now stored in a tibble called `class_a_df`, we can now view the data in our notebook.
 
-```{r view_data_a}
+```{r view_data_example}
 class_a_df
 ```
 
 ## Exercise
+
+Now it's your turn. There is another CSV file we need to load in called *class_b.csv* located in the *data* folder. Your task is to read that file into a tibble called `class_b_df` and view the data in this notebook.
+
+```{r read_data_exercise}
+# TODO: Read class_b.csv into a tibble called class_b_df
+# YOUR CODE BELOW
+
+
+
+```
+
+```{r view_data_exercise}
+# TODO: View class_b_df
+# YOUR CODE BELOW
+
+
+
+```
