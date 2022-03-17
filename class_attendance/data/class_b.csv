@@ -1,0 +1,10 @@
+Name,Grade,Week.1.Attendance,Week.2.Attendance,Week.3.Attendance,Week.4.Attendance,Week.5.Attendance,Pre.Assessment.Score,Post.Assessment.Score
+Karla,8,TRUE,TRUE,FALSE,FALSE,TRUE,0.7,0.8
+Marissa,6,FALSE,TRUE,FALSE,TRUE,FALSE,0.4,0.5
+Ariel,6,TRUE,FALSE,FALSE,FALSE,FALSE,0.6,0.8
+Geoff,6,FALSE,TRUE,TRUE,TRUE,TRUE,0.5,0.9
+Alana,7,FALSE,TRUE,TRUE,TRUE,TRUE,0.3,0.4
+Howard,7,FALSE,TRUE,TRUE,FALSE,FALSE,0.1,0.4
+Dominic,7,FALSE,TRUE,FALSE,FALSE,TRUE,0.6,0.5
+Sascha,8,TRUE,TRUE,FALSE,TRUE,TRUE,0.2,0.5
+Blake,8,TRUE,TRUE,TRUE,TRUE,FALSE,0.5,0.8

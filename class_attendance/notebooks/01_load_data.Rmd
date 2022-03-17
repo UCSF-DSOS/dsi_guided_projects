@@ -1,0 +1,66 @@
+---
+title: "Load and View Data from CSV files"
+output: html_notebook
+---
+
+# Load and View Data from CSV Files
+
+## Supporting Materials
+
+## Example
+
+First we need to load the libraries we're using\*. In this example, all we're using is the `tidyverse` library.
+
+*\*You'll need to ensure that your libraries are installed (`install.packages()`) first before loading them.*
+
+```{r load_required_libraries}
+library(tidyverse)
+```
+
+Now let's load in the data we're analyzing. In this example, we'll load in *class_a.csv*.
+
+While loading in data from CSV files, it's important to understand the location of the CSV files relative to the location of the R Notebook. Take a look at the diagram below.
+
+    class_attendance/
+    ├── notebooks/
+    │   ├── 01_load_data.Rmd
+    │   └── 01_merge_data.Rmd
+    └── data
+        ├── class_a.csv
+        └── class_b.csv
+
+The notebook we're using right now is *01_load_data.Rmd* and the CSV file we're trying to load is *class_a.csv*. Notice that they're in separate folders (*notebooks* and *data*). To reach *data/class_a.csv* from *notebooks/01_load_data.Rmd*, we need to:
+
+1.  Step out of the *notebooks* directory
+
+2.  Step into the *data* directory
+
+3.  Access *class_a.csv*
+
+You can think of this as the **path** from *notebooks/01_load_data.Rmd* to *data/class_a.csv* and here is how it's represented.
+
++----------------------------------------------------------------------------+-----------------------+
+| Step                                                                       | Representation        |
++============================================================================+=======================+
+| Full relative path from *notebooks/01_load_data.Rmd* to *data/class_a.csv* | `../data/class_a.csv` |
++----------------------------------------------------------------------------+-----------------------+
+| 1.  Step out of the *notebooks* directory                                  | `../`                 |
++----------------------------------------------------------------------------+-----------------------+
+| 2.  Step into the *data* directory                                         | `data/`               |
++----------------------------------------------------------------------------+-----------------------+
+| 3.  Access *class_a.csv*                                                   | `class_a.csv`         |
++----------------------------------------------------------------------------+-----------------------+
+
+Now that you have the path (`../data/class_a.csv`), you can use the `read_csv()` function to load the CSV file into a tibble.
+
+```{r read_data_a}
+class_a_df <- read_csv("../data/class_a.csv")
+```
+
+With the data now stored in a tibble called `class_a_df`, we can now view the data in our notebook.
+
+```{r view_data_a}
+class_a_df
+```
+
+## Exercise
