@@ -3,7 +3,9 @@ title: "Challenge"
 output: html_notebook
 ---
 
-# Class Attendance
+# Challenge!
+
+Let's test your knowledge!
 
 ## Supporting Materials
 
@@ -20,14 +22,14 @@ In addition, we recommend completing the following exercises before beginning th
 
 -   *Examine Subsets of Data (03_examine_data.Rmd)*
 
-## Challenge
+## Exercise
 
 We have six classes (a, b, c, d, e, and f) all taking the same course, and we would like to know whether older students miss fewer classes and show more progress.
 
 Your task is to load the csv files for all six classes and create a single table that displays the following columns:
 
 | Column                      | Description                                                                                               |
-|:------------------------|:---------------------------------------------|
+|:-------------------------|:---------------------------------------------|
 | Grade                       | A grade of students (6, 7, or 8)                                                                          |
 | students                    | The number of students in the grade (across all six classes)                                              |
 | average_total_attendance    | The class mean for the total attendance of each student                                                   |

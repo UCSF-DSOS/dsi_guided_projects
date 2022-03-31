@@ -3,7 +3,9 @@ title: "Challenge"
 output: html_notebook
 ---
 
-# Class Attendance
+# Challenge!
+
+Let's test your knowledge!
 
 ## Supporting Materials
 
@@ -20,7 +22,7 @@ In addition, we recommend completing the following exercises before beginning th
 
 -   *Examine Subsets of Data (03_examine_data.Rmd)*
 
-## Challenge
+## Exercise
 
 We have six classes (a, b, c, d, e, and f) all taking the same course, and we would like to know whether older students miss fewer classes and show more progress.
 
