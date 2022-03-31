@@ -1,0 +1,7 @@
+﻿Name,Grade,Week.1.Attendance,Week.2.Attendance,Week.3.Attendance,Week.4.Attendance,Week.5.Attendance,Pre.Assessment.Score,Post.Assessment.Score
+Mario,8,TRUE,TRUE,TRUE,TRUE,TRUE,0.6,0.6
+Jordan,8,TRUE,TRUE,FALSE,TRUE,TRUE,0.3,0.6
+Tyson,8,TRUE,TRUE,TRUE,FALSE,TRUE,0.4,0.8
+Jamie,6,FALSE,TRUE,FALSE,FALSE,TRUE,0.4,0.6
+Carson,7,TRUE,FALSE,TRUE,FALSE,FALSE,0.4,0.6
+Abdiel,7,TRUE,TRUE,TRUE,FALSE,TRUE,0.4,0.5

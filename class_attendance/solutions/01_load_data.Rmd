@@ -5,7 +5,13 @@ output: html_notebook
 
 # Load and View Data from CSV Files
 
+In this notebook, you will load data from CSV files into tibbles. You will first review an example and then try it yourself by completing an exercise.
+
 ## Supporting Materials
+
+Make sure you are familiar with the knowledge covered in:
+
+-   R for Everyone
 
 ## Example
 
@@ -22,16 +28,20 @@ Now let's load in the data we're analyzing. In this example, we'll load in *clas
 While loading in data from CSV files, it's important to understand the location of the CSV files relative to the location of the R Notebook. Take a look at the diagram below.
 
     class_attendance/
-    ├── notebooks/
+    ├── exercises/
     │   ├── 01_load_data.Rmd
-    │   └── 01_merge_data.Rmd
+    │   └── 02_concatenate_data.Rmd
     └── data
         ├── class_a.csv
-        └── class_b.csv
+        ├── class_b.csv
+        ├── class_c.csv
+        ├── class_d.csv
+        ├── class_e.csv
+        └── class_f.csv
 
-The notebook we're using right now is *01_load_data.Rmd* and the CSV file we're trying to load is *class_a.csv*. Notice that they're in separate folders (*notebooks* and *data*). To reach *data/class_a.csv* from *notebooks/01_load_data.Rmd*, we need to:
+The notebook we're using right now is *01_load_data.Rmd* and the CSV file we're trying to load is *class_a.csv*. Notice that they're in separate folders (*notebooks* and *data*). To reach *data/class_a.csv* from *exercises/01_load_data.Rmd*, we need to:
 
-1.  Step out of the *notebooks* directory
+1.  Step out of the *exercises* directory
 
 2.  Step into the *data* directory
 
@@ -41,8 +51,8 @@ You can think of this as the **path** from *notebooks/01_load_data.Rmd* to *data
 
 | Step                                                                       | Representation        |
 |:-----------------------------------|:-----------------------------------|
-| Full relative path from *notebooks/01_load_data.Rmd* to *data/class_a.csv* | `../data/class_a.csv` |
-| 1\. Step out of the *notebooks* directory                                  | `../`                 |
+| Full relative path from *exercises/01_load_data.Rmd* to *data/class_a.csv* | `../data/class_a.csv` |
+| 1\. Step out of the *exercises* directory                                  | `../`                 |
 | 2\. Step into the *data* directory                                         | `data/`               |
 | 3\. Access *class_a.csv*                                                   | `class_a.csv`         |
 
@@ -60,10 +70,10 @@ class_a_df
 
 ## Exercise
 
-Now it's your turn. There is another CSV file we need to load in called *class_b.csv* located in the *data* folder. Your task is to read that file into a tibble called `class_b_df` and view the data in this notebook.
+Now it's your turn. There is another CSV file we need to load in called *class_b.csv* located in the *data* folder. Your task is to read that file into a tibble called *class_b\_df* and view the data in this notebook.
 
 ```{r read_data_exercise}
-# TODO: Read class_b.csv into a tibble called class_b_df
+# TODO: Load class_b.csv into a tibble called class_b_df
 # YOUR CODE BELOW
 class_b_df <- read_csv("../data/class_b.csv")
 ```
