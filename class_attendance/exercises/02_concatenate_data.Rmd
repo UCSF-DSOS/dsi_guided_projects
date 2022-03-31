@@ -1,0 +1,106 @@
+---
+title: "Concatenate Data from Multiple Tibbles"
+output: html_notebook
+---
+
+# Concatenate Data from Multiple Tibbles
+
+In this notebook, you will concatenate data from multiple tibbles. You will first review an example and then try it yourself by completing an exercise.
+
+## Supporting Materials
+
+Make sure you are familiar with the knowledge covered in:
+
+-   R for Everyone
+-   R for Data Manipulation
+
+In addition, we recommend completing and running the code in *Load and View Data from CSV Files* *(01_load_data.Rmd)* before beginning this exercise. Otherwise, run the code chunk below.
+
+```{r source_required_scripts, include=FALSE}
+source("../scripts/01_load_data.R")
+```
+
+## Example
+
+Let's take another look at our data. Specifically, let's see the first 3 rows in `class_a_df` and `class_b_df`.
+
+```{r view_head_example}
+head(class_a_df, n = 3)
+head(class_b_df, n = 3)
+```
+
+As you can see, the two tibbles have the same columns. In this case, the two tibbles include data from two different classes of students, but the data being collected is the same.
+
+In situations like these, rather than keeping the data in separate tibbles, it would make more sense to **concatenate** (aka combine) them. Here we are going to concatenate the rows of the two tibbles. Specifically, we will:
+
+1.  Create a new *class* column in both *class_a\_df* and *class_b\_df* that contains the class the students in the tibble are from.
+2.  Concatenate the rows of *class_a\_df* and *class_b\_df* and assign the result to a tibble called *class_attendance_df*
+3.  View *class_attendance_df*
+
+### Create New Column
+
+The `mutate()` function is used to create new columns or adjust existing ones. We'll use the mutate function to create a new column called *class*, which will contain each student's class.
+
+```{r mutate_example}
+class_a_df <- class_a_df %>%
+  mutate(class = "a")
+
+class_b_df <- class_b_df %>%
+  mutate(class = "b")
+```
+
+### Concatenate Rows
+
+To concatenate the rows in *class_a\_df* and *class_b\_df*, we'll use the `bind_rows()` function. Don't forget to assign the results to an object (*class_attendance_df*)
+
+```{r concatenate_example}
+class_attendance_df <- bind_rows(
+  class_a_df,
+  class_b_df
+)
+```
+
+### View Results
+
+Let's take a look at *class_attendance_df*. Notice that the tibble now contains students from both class a and class b, and there is now a new class column that indicates which class each student is from.
+
+```{r view_data_example}
+class_attendance_df
+```
+
+## Exercise
+
+Now it's your turn. Suppose you were interested in the students of class c as well. Here is your task for this exercise:
+
+1.  Load *class_c.csv* into a tibble called *class_c\_df*.
+2.  Create a new column in *class_c\_df* called *class* that contains the class the students in the tibble are from (c).
+3.  Concatenate *class_c\_df* to the rows in *class_attendance_df*.
+4.  View the results of *class_attendance_df.*
+
+```{r read_data_exercise}
+# TODO: Load class_c.csv into a tibble called class_c_df
+# YOUR CODE BELOW
+
+
+```
+
+```{r mutate_exercise}
+# TODO: Create a new column in class_c_df called class that contains the class the students in the tibble are from (c).
+# YOUR CODE BELOW
+
+
+```
+
+```{r concatenate_exercise}
+# TODO: Concatenate class_c_df to the rows in class_attendance_df.
+# YOUR CODE BELOW
+
+
+```
+
+```{r view_data_exercise}
+# TODO: View the results of class_attendance_df.
+# YOUR CODE BELOW
+
+
+```
