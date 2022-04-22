@@ -7,20 +7,13 @@ output: html_notebook
 
 Let's test your knowledge!
 
-## Supporting Materials
+We recommend completing the following exercises before beginning the challenge:
 
-Make sure you are familiar with the knowledge covered in:
+-   Load and View Data from CSV Files *(01_load_data.Rmd)*
 
--   R for Everyone
--   R for Data Manipulation
+-   Concatenate Data from Multiple Tibbles *(02_concatenate_data.Rmd)*
 
-In addition, we recommend completing the following exercises before beginning the challenge:
-
--   *Load and View Data from CSV Files* *(01_load_data.Rmd)*
-
--   *Concatenate Data from Multiple Tibbles* *(02_concatenate_data.Rmd)*
-
--   *Examine Subsets of Data (03_examine_data.Rmd)*
+-   Examine Subsets of Data *(03_examine_data.Rmd)*
 
 ## Exercise
 
@@ -29,7 +22,7 @@ We have six classes (a, b, c, d, e, and f) all taking the same course, and we wo
 Your task is to load the csv files for all six classes and create a single table that displays the following columns:
 
 | Column                      | Description                                                                                               |
-|:-------------------------|:---------------------------------------------|
+|:----------------------------|:----------------------------------------------------------------------------------------------------------|
 | Grade                       | A grade of students (6, 7, or 8)                                                                          |
 | students                    | The number of students in the grade (across all six classes)                                              |
 | average_total_attendance    | The class mean for the total attendance of each student                                                   |
@@ -41,19 +34,72 @@ Your task is to load the csv files for all six classes and create a single table
 library(tidyverse)
 ```
 
+## Solution
+
+Our solution is divided into two parts:
+
+-   Load Data
+
+-   Create Summary
+
+### Load Data
+
+Our first step is to load all the csv files we need into tibbles and concatenate them. You can do this using the code below:
+
+    class_a_attendance <- read_csv("../data/class_a.csv")
+    class_b_attendance <- read_csv("../data/class_b.csv")
+    class_c_attendance <- read_csv("../data/class_c.csv")
+    class_d_attendance <- read_csv("../data/class_d.csv")
+    class_e_attendance <- read_csv("../data/class_e.csv")
+    class_f_attendance <- read_csv("../data/class_f.csv")
+
+    class_attendance_df <- bind_rows(
+      class_a_attendance,
+      class_b_attendance,
+      class_c_attendance,
+      class_d_attendance,
+      class_e_attendance,
+      class_f_attendance
+    )
+
+In our solution, we did this using a loop.
+
+-   First, we initialize an empty vector (*class_attendance_df*) to store all the data.
+
+-   Then, using the `list.files()` function, we looped through all the files in the *data* directory.
+
+-   In each iteration of the loop, we read in a single csv file and created a new column (*class*).
+
+-   The results were concatenated to *class_attendance_df*.
+
 ```{r}
+
+# Initialize an empty vector to store all data
 class_attendance_df <- c()
+
+# Loop through files in the data directory
 for (class_csv in list.files("../data")){
-  print(class_csv)
+  
+  # Concatenate data from each individual csv file to class_attendance_df
   class_attendance_df <- bind_rows(
     class_attendance_df,
     read_csv(paste("../data/", class_csv, sep = "")) %>% 
+      # Create a class column
+      # Can you determine how the substr function works? ;)
       mutate(class = substr(class_csv, 7, 7)),
   )
 }
 
 class_attendance_df
 ```
+
+It would be beneficial for you to familiarize yourself with this pattern. Imagine having to read 100 or even 1000 data files. Would you rather accomplish this by reading each file into a separate tibble, or would it be more efficient to use a loop?
+
+### Create Summary
+
+Now that we've loaded our data into *class_attendance_df*, it is time to create our summary table.
+
+First, we used mutate to create the *total_attendance* and *assessment_progress* columns. Since each row in our summary table will represent a grade level, we'll need to group by *Grade*. Last but not least, we'll use `summarize()` to calculate the number of students and the average/median of *total_attendance* and *assessment_progress* in each grade level.
 
 ```{r}
 class_attendance_df %>%
