@@ -7,20 +7,13 @@ output: html_notebook
 
 Let's test your knowledge!
 
-## Supporting Materials
+We recommend completing the following exercises before beginning the challenge:
 
-Make sure you are familiar with the knowledge covered in:
+-   Load and View Data from CSV Files *(01_load_data.Rmd)*
 
--   R for Everyone
--   R for Data Manipulation
+-   Concatenate Data from Multiple Tibbles *(02_concatenate_data.Rmd)*
 
-In addition, we recommend completing the following exercises before beginning the challenge:
-
--   *Load and View Data from CSV Files* *(01_load_data.Rmd)*
-
--   *Concatenate Data from Multiple Tibbles* *(02_concatenate_data.Rmd)*
-
--   *Examine Subsets of Data (03_examine_data.Rmd)*
+-   Examine Subsets of Data *(03_examine_data.Rmd)*
 
 ## Exercise
 
@@ -29,7 +22,7 @@ We have six classes (a, b, c, d, e, and f) all taking the same course, and we wo
 Your task is to load the csv files for all six classes and create a single table that displays the following columns:
 
 | Column                      | Description                                                                                               |
-|:-------------------------|:---------------------------------------------|
+|:-----------------|:-----------------------------------------------------|
 | Grade                       | A grade of students (6, 7, or 8)                                                                          |
 | students                    | The number of students in the grade (across all six classes)                                              |
 | average_total_attendance    | The class mean for the total attendance of each student                                                   |
