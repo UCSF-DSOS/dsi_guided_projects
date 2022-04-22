@@ -7,14 +7,7 @@ output: html_notebook
 
 In this notebook, you will concatenate data from multiple tibbles. You will first review an example and then try it yourself by completing an exercise.
 
-## Supporting Materials
-
-Make sure you are familiar with the knowledge covered in:
-
--   R for Everyone
--   R for Data Manipulation
-
-In addition, we recommend completing and running the code in *Load and View Data from CSV Files* *(01_load_data.Rmd)* before beginning this exercise. Otherwise, run the code chunk below.
+We recommend completing and running the code in Load and View Data from CSV Files *(01_load_data.Rmd)* before beginning this exercise. Otherwise, run the code chunk below.
 
 ```{r source_required_scripts, include=FALSE}
 source("../scripts/01_load_data.R")
