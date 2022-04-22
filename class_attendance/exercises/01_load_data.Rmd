@@ -7,12 +7,6 @@ output: html_notebook
 
 In this notebook, you will load data from CSV files into tibbles. You will first review an example and then try it yourself by completing an exercise.
 
-## Supporting Materials
-
-Make sure you are familiar with the knowledge covered in:
-
--   R for Everyone
-
 ## Example
 
 First we need to load the libraries we're using\*. In this example, all we're using is the `tidyverse` library.
@@ -50,7 +44,7 @@ The notebook we're using right now is *01_load_data.Rmd* and the CSV file we're 
 You can think of this as the **path** from *notebooks/01_load_data.Rmd* to *data/class_a.csv* and here is how it's represented.
 
 | Step                                                                       | Representation        |
-|:-----------------------------------|:-----------------------------------|
+|:---------------------------------------------------------------------------|:----------------------|
 | Full relative path from *exercises/01_load_data.Rmd* to *data/class_a.csv* | `../data/class_a.csv` |
 | 1\. Step out of the *exercises* directory                                  | `../`                 |
 | 2\. Step into the *data* directory                                         | `data/`               |
