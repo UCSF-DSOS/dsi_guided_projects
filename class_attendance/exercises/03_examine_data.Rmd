@@ -7,18 +7,11 @@ output: html_notebook
 
 In this notebook, you will examine subsets of the data. You will first review an example and then try it yourself by completing an exercise.
 
-## Supporting Materials
+We recommend completing and running the code in the following exercises before beginning this one:
 
-Make sure you are familiar with the knowledge covered in:
+-   Load and View Data from CSV Files *(01_load_data.Rmd)*
 
--   R for Everyone
--   R for Data Manipulation
-
-In addition, we recommend completing and running the code in the following exercises before beginning this one:
-
--   *Load and View Data from CSV Files* *(01_load_data.Rmd)*
-
--   *Concatenate Data from Multiple Tibbles* *(02_concatenate_data.Rmd)*
+-   Concatenate Data from Multiple Tibbles *(02_concatenate_data.Rmd)*
 
 Otherwise, run the code chunk below.
 
