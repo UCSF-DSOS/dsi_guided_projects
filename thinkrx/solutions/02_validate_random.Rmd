@@ -1,0 +1,136 @@
+---
+title: "Validating Random Assignment of Groups"
+output: html_notebook
+---
+
+# Validating Random Assignment of Groups
+
+We recommend completing and running the code in Load and View Data from CSV Files *(01_prepare_data.Rmd)* before beginning this exercise. Otherwise, run the code chunk below.
+
+```{r source_required_scripts, include=FALSE}
+source("../scripts/01_prepare_data.R")
+```
+
+## Exercise
+
+In this notebook, you will validate that groups were randomly assigned to individuals by checking for differences in demographics between the groups.
+
+### Age
+
+First, we'll test whether the difference between the mean ages in the one-on-one and mixed delivery experimental groups are different.
+
+|                        |                                                                                                       |
+|--------------------|----------------------------------------------------|
+| Null Hypothesis        | The difference in means of ages between one-on-one delivery and mixed delivery is equal to 0.         |
+| Alternative Hypothesis | The difference in means of ages between one-on-one delivery and mixed delivery is **not** equal to 0. |
+
+For this, you'll use a [Two Sample t-test](https://www.statology.org/two-sample-t-test/). Below is the code to run the test in R:
+
+    t.test(
+      experiment_data_df$age ~ experiment_data_df$group, # Testing age as a function of group
+      alternative = "two.sided",                         # Two-sided test ("not equal to 0")
+      var.equal = TRUE                                   # Treat variance of two groups as equal
+    )
+
+Go ahead and try running the code yourself.
+
+```{r check_random_age}
+# TODO: 
+# Complete Two Sample t-test for age as a function of group
+# YOUR CODE BELOW
+t.test(
+  experiment_data_df$age ~ experiment_data_df$group,
+  alternative = "two.sided",
+  var.equal = TRUE
+)
+```
+
+Based on the p-value, we don't have enough evidence to reject the null hypothesis at the 5 percent significance level. Therefore, we accept the null hypothesis:
+
+|                                                                                               |
+|------------------------------------------------------------------------|
+| The difference in means of ages between one-on-one delivery and mixed delivery is equal to 0. |
+
+This mean we conclude that there is no meaningful difference in ages between the two experimental groups.
+
+### Gender
+
+*\*Generally, you should check whether the term "Gender" is being used synonymously with "Sex Assigned at Birth." This is especially important when male and female are the only responses.*
+
+Next, let's test whether the the experimental groups and gender are independent.
+
+|                        |                                                        |
+|--------------------|----------------------------------------------------|
+| Null Hypothesis        | There is **no** relationship between gender and group. |
+| Alternative Hypothesis | There is relationship between gender and group.        |
+
+For this, you'll use a Pearson's Chi Squared Test. Below is the code to run the test in R:
+
+    chisq.test(
+      experiment_data_df$group,     # Testing whether gender and group are independent
+      experiment_data_df$gender,
+      correct = FALSE,              # Continuity correction is not applied
+      simulate.p.value = TRUE       # p values are computed by Monte Carlo simulation
+    )
+
+More information about:
+
+-   [Pearson's Chi Squared Test](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test)
+
+-   [Continuity Correction](https://en.wikipedia.org/wiki/Yates%27s_correction_for_continuity)
+
+-   [Monte Carlo Simulation](https://stats.stackexchange.com/questions/62445/rules-to-apply-monte-carlo-simulation-of-p-values-for-chi-squared-test)
+
+Go ahead and try running the code yourself.
+
+```{r check_random_gender}
+# TODO: 
+# Complete Chi Squared test for group and gender
+# YOUR CODE BELOW
+chisq.test(
+  experiment_data_df$group,     # Testing whether gender and group are independent
+  experiment_data_df$gender,
+  correct = FALSE,              # Continuity correction is not applied
+  simulate.p.value = TRUE       # p values are computed by Monte Carlo simulation
+)
+```
+
+Based on the p-value, we don't have enough evidence to reject the null hypothesis at the 5 percent significance level. Therefore, we accept the null hypothesis:
+
+|                                                        |
+|--------------------------------------------------------|
+| There is **no** relationship between gender and group. |
+
+This mean we conclude that there is no meaningful relationship between gender and the experimental groups.
+
+### Race and Disability Status
+
+Both race and disability status are categorical data like gender, and we should use the chi-squared test to determine whether they are independent from experimental groups. Like before, we will not apply the Continuity Correction, and we will use Monte Carlo simulations to calculate the p-value.
+
+```{r check_random_race}
+# TODO: 
+# Complete Chi Squared test for group and race
+# YOUR CODE BELOW
+chisq.test(
+  experiment_data_df$group,     # Testing whether gender and group are independent
+  experiment_data_df$race_type,
+  correct = FALSE,              # Continuity correction is not applied
+  simulate.p.value = TRUE       # p values are computed by Monte Carlo simulation
+)
+```
+
+```{r check_random_disability}
+# TODO: 
+# Complete Chi Squared test for group and disability status
+# YOUR CODE BELOW
+chisq.test(
+  experiment_data_df$group,     # Testing whether gender and group are independent
+  experiment_data_df$no_disability,
+  correct = FALSE,              # Continuity correction is not applied
+  simulate.p.value = TRUE       # p values are computed by Monte Carlo simulation
+)
+```
+
+Verify that your results match the results from the [research paper](https://rdcu.be/c3NWc), which can be found in the *Procedures* section on page 263:
+
+*"A check of the random assignment indicated the groups were balanced, with no significant differences between groups based on personal characteristics (age: t = 0.217, p = 0.829; gender: χ 2 = 1.80, p = 0.210; race/ethnicity: χ2 = 2.35, p = 0.218; no disability: χ2 = 0.54, p = 0.522)."*
