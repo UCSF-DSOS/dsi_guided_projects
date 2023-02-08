@@ -1,5 +1,5 @@
 ---
-title: "Validating Random Assignment of Groups"
+title: "Testing for Significant Differences in Response Variables"
 output: html_notebook
 ---
 
@@ -22,7 +22,7 @@ In this notebook, we'll do a hypothesis test to determine whether there was a di
 Now that we've verified that our groups were randomly assigned, it's time to do our hypothesis test to determine whether there was a difference in cognitive improvement between the two experimental groups (One-On-One Delivery and Mixed Delivery). Below is a list of variables we are interested in:
 
 | Response Variable          | Description                                                                                                    |
-|--------------|---------------------------------------------------------|
+|----------------------------|----------------------------------------------------------------------------------------------------------------|
 | `associative_memory_gain`  | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Auditory Learning Subtest     |
 | `visual_processing_gain`   | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Spatial Relations Subtest            |
 | `auditory_processing_gain` | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Sound Blending Subtest               |
@@ -37,7 +37,7 @@ Since all these variables are continuous, one way to do this is to use [Two Samp
 Instead, to test all these continuous variables at once, we'll use a [MANOVA test](https://www.statistics.com/glossary/multiple-analysis-of-variance-manova/).
 
 |                        |                                                                                                                    |
-|---------------------|---------------------------------------------------|
+|------------------------|--------------------------------------------------------------------------------------------------------------------|
 | Null Hypothesis        | The means of all the variables is equal between the one-on-one delivery and mixed delivery groups.                 |
 | Alternative Hypothesis | The means of at least one of the variables is not equal between the one-on-one delivery and mixed delivery groups. |
 

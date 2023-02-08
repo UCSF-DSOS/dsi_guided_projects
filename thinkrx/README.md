@@ -3,7 +3,7 @@
 In this project, you will reproduce aspects of the research conducted in the following research paper:
 
 |                                                                                                                                                                                                                                                                                                    |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------|
 | Moore, A.L., Carpenter, D.M., Miller, T.M. et al. Comparing Two Methods of Delivering ThinkRx Cognitive Training to Children Ages 8--14: a Randomized Controlled Trial of Equivalency. *J Cogn Enhanc* **3**, 261--270 (2019). <https://doi.org/10.1007/s41465-018-0094-z> <https://rdcu.be/c3NWc> |
 
 This guided project will utilize a modified version of the original data from this research, which was made available to the public domain through the [Harvard Dataverse](https://dataverse.harvard.edu/) repository.
@@ -12,7 +12,7 @@ There are 3 exercises in this guided project:
 
 1.  Preparing the Data
 2.  Validating Random Assignment of Groups
-3.  Evaluating Equivalence of Testing Results Between Groups
+3.  Testing for Significant Differences in Response Variables
 
 Exercises are located in the *exercises* folder, and the solutions are located in the *solutions* folder.
 
