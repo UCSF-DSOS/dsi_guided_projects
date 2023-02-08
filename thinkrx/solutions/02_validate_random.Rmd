@@ -11,16 +11,22 @@ We recommend completing and running the code in Load and View Data from CSV File
 source("../scripts/01_prepare_data.R")
 ```
 
+In addition, you should review the *Method* section of the [research paper](https://rdcu.be/c3NWc) before beginning.
+
 ## Exercise
 
 In this notebook, you will validate that groups were randomly assigned to individuals by checking for differences in demographics between the groups.
+
+More specifically, we'll reproduce some of the results from the [research paper](https://rdcu.be/c3NWc), which can be found in the *Procedures* section on page 263:
+
+*"A check of the random assignment indicated the groups were balanced, with no significant differences between groups based on personal characteristics (age: t = 0.217, p = 0.829; gender: χ 2 = 1.80, p = 0.210; race/ethnicity: χ2 = 2.35, p = 0.218; no disability: χ2 = 0.54, p = 0.522)."*
 
 ### Age
 
 First, we'll test whether the difference between the mean ages in the one-on-one and mixed delivery experimental groups are different.
 
 |                        |                                                                                                       |
-|--------------------|----------------------------------------------------|
+|---------------------|---------------------------------------------------|
 | Null Hypothesis        | The difference in means of ages between one-on-one delivery and mixed delivery is equal to 0.         |
 | Alternative Hypothesis | The difference in means of ages between one-on-one delivery and mixed delivery is **not** equal to 0. |
 
@@ -60,7 +66,7 @@ This mean we conclude that there is no meaningful difference in ages between the
 Next, let's test whether the the experimental groups and gender are independent.
 
 |                        |                                                        |
-|--------------------|----------------------------------------------------|
+|---------------------|---------------------------------------------------|
 | Null Hypothesis        | There is **no** relationship between gender and group. |
 | Alternative Hypothesis | There is relationship between gender and group.        |
 
@@ -130,7 +136,3 @@ chisq.test(
   simulate.p.value = TRUE       # p values are computed by Monte Carlo simulation
 )
 ```
-
-Verify that your results match the results from the [research paper](https://rdcu.be/c3NWc), which can be found in the *Procedures* section on page 263:
-
-*"A check of the random assignment indicated the groups were balanced, with no significant differences between groups based on personal characteristics (age: t = 0.217, p = 0.829; gender: χ 2 = 1.80, p = 0.210; race/ethnicity: χ2 = 2.35, p = 0.218; no disability: χ2 = 0.54, p = 0.522)."*

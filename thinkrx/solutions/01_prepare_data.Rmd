@@ -3,23 +3,20 @@ title: "Preparing the Data"
 output: html_notebook
 ---
 
+Before you begin, we recommend reviewing the [research paper](https://rdcu.be/c3NWc) up to the *Method* section. This will give you an overview of the experiment that was run to generate the data in this project.
+
 # Preparing the Data
 
 Data is often stored in a relational way, and instead of having all the variables you need in a single table, you have multiple tables and files that contain different variables.
 
 In this example, we have four different CSV files stored in the *data* directory containing different information about the participants:
 
-+------------------+--------------------------+
 | File             | Description              |
-+==================+==========================+
+|------------------|--------------------------|
 | diagnosis.csv    | Mental health conditions |
-+------------------+--------------------------+
 | groups.csv       | Experimental groups      |
-+------------------+--------------------------+
 | participants.csv | Demographics             |
-+------------------+--------------------------+
 | test_results.csv | Experiment Results       |
-+------------------+--------------------------+
 
 Before we proceed with our analysis, we'll need to combine the data from the CSV files. The output should be a single tibble with the following columns:
 

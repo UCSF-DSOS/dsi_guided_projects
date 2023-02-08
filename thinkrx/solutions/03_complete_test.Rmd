@@ -1,0 +1,82 @@
+---
+title: "Validating Random Assignment of Groups"
+output: html_notebook
+---
+
+# Testing for Significant Differences in Response Variables
+
+We recommend completing and running the code in Load and View Data from CSV Files *(01_prepare_data.Rmd)* and Validating Random Assignment of Groups *(02_validate_random.Rmd)* before beginning this exercise. Otherwise, run the code chunk below.
+
+```{r source_required_scripts, include=FALSE}
+source("../scripts/01_prepare_data.R")
+```
+
+In addition, you should review the *Results* section of the [research paper](https://rdcu.be/c3NWc) before beginning.
+
+In this notebook, we'll do a hypothesis test to determine whether there was a difference in cognitive improvement between the two experimental groups (One-On-One Delivery and Mixed Delivery). More specifically, we'll reproduce some of the results from the [research paper](https://rdcu.be/c3NWc), which can be found in the *Results of Statistical Significance Testing* section on page 266:
+
+*"MANOVA results indicate an overall significant difference between groups (F = 3.36, p = 0.01), with pairwise comparisons indicating the significant difference between groups was on one of the eight measures---long-term memory. On that measure, the one-on-one delivery group showed greater growth than the mixed delivery group."*
+
+## Exercise
+
+Now that we've verified that our groups were randomly assigned, it's time to do our hypothesis test to determine whether there was a difference in cognitive improvement between the two experimental groups (One-On-One Delivery and Mixed Delivery). Below is a list of variables we are interested in:
+
+| Response Variable          | Description                                                                                                    |
+|--------------|---------------------------------------------------------|
+| `associative_memory_gain`  | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Auditory Learning Subtest     |
+| `visual_processing_gain`   | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Spatial Relations Subtest            |
+| `auditory_processing_gain` | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Sound Blending Subtest               |
+| `logic_reasoning_gain`     | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Concept Formation Subtest            |
+| `processing_speed_gain`    | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Matching Subtest              |
+| `working_memory_gain`      | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Numbers Reversed Subtest             |
+| `long_term_memory_gain`    | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Auditory 1 Learning Subtest   |
+| `iq_gain`                  | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Weighted composite of other subtests |
+
+Since all these variables are continuous, one way to do this is to use [Two Sample t-tests](https://www.statology.org/two-sample-t-test/) (similar to how we verified age wasn't significantly different between the experimental groups). The downside of that is running multiple tests like this increases the probability of making a [Type I error](https://www.simplypsychology.org/type_I_and_type_II_errors.html).
+
+Instead, to test all these continuous variables at once, we'll use a [MANOVA test](https://www.statistics.com/glossary/multiple-analysis-of-variance-manova/).
+
+|                        |                                                                                                                    |
+|---------------------|---------------------------------------------------|
+| Null Hypothesis        | The means of all the variables is equal between the one-on-one delivery and mixed delivery groups.                 |
+| Alternative Hypothesis | The means of at least one of the variables is not equal between the one-on-one delivery and mixed delivery groups. |
+
+Below is the code to run the MANOVA in R:
+
+    manova_results <- manova(
+      cbind(associative_memory_gain,    # Testing whether response variables
+            visual_processing_gain,     #   and groups are independent
+            auditory_processing_gain,
+            logic_reasoning_gain,
+            processing_speed_gain,
+            working_memory_gain,
+            long_term_memory_gain,
+            iq_gain) ~ group,           
+      data = experiment_data_df         # Our data is stored in experiment_data_df
+    )
+
+    summary.aov(manova_results)         # Display MANOVA results summary
+
+Go ahead and try running the code yourself.
+
+```{r test_manova}
+# TODO: 
+# Complete MANOVA test for response variables and group
+# Display a summary of the results
+# YOUR CODE BELOW
+manova_results <- manova(
+  cbind(associative_memory_gain,
+        visual_processing_gain,
+        auditory_processing_gain,
+        logic_reasoning_gain,
+        processing_speed_gain,
+        working_memory_gain,
+        long_term_memory_gain,
+        iq_gain) ~ group,           
+  data = experiment_data_df
+)
+
+summary.aov(manova_results)
+```
+
+If you did this correctly, you should see a significant difference in the long-term memory gain between the one-on-one delivery and mixed delivery groups.
