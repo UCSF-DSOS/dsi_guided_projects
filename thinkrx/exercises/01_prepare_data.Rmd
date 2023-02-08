@@ -1,0 +1,102 @@
+---
+title: "Preparing the Data"
+output: html_notebook
+---
+
+Before you begin, we recommend reviewing the [research paper](https://rdcu.be/c3NWc) up to the *Method* section. This will give you an overview of the experiment that was run to generate the data in this project.
+
+# Preparing the Data
+
+Data is often stored in a relational way, and instead of having all the variables you need in a single table, you have multiple tables and files that contain different variables.
+
+In this example, we have four different CSV files stored in the *data* directory containing different information about the participants:
+
+| File             | Description              |
+|------------------|--------------------------|
+| diagnosis.csv    | Mental health conditions |
+| groups.csv       | Experimental groups      |
+| participants.csv | Demographics             |
+| test_results.csv | Experiment Results       |
+
+Before we proceed with our analysis, we'll need to combine the data from the CSV files. The output should be a single tibble with the following columns:
+
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| Column                     | Source           | Description                                                                                                    |
++============================+==================+================================================================================================================+
+| `participant_id`           | participants.csv | Unique identifier for each partitipant                                                                         |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `birth_date`               | participants.csv | Birth date of each participant                                                                                 |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `age`                      | participants.csv | Age of each participant (range 8-14)                                                                           |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `race_type`                | participants.csv | Race of each participant (White, Hispanic, Mixed/Other)                                                        |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `gender`                   | participants.csv | Male/Female                                                                                                    |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `no_disability`            | diagnosis.csv    | 0: Participant had a disability                                                                                |
+|                            |                  |                                                                                                                |
+|                            |                  | 1: Participant had no disability                                                                               |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `group`                    | groups.csv       | 1: One-On-One Delivery (ThinkRx)                                                                               |
+|                            |                  |                                                                                                                |
+|                            |                  | 2: Mixed Delivery (BrainLab)                                                                                   |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `associative_memory_gain`  | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Auditory Learning Subtest     |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `visual_processing_gain`   | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Spatial Relations Subtest            |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `auditory_processing_gain` | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Sound Blending Subtest               |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `logic_reasoning_gain`     | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Concept Formation Subtest            |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `processing_speed_gain`    | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Matching Subtest              |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `working_memory_gain`      | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Numbers Reversed Subtest             |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `long_term_memory_gain`    | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Auditory 1 Learning Subtest   |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+| `iq_gain`                  | test_results.csv | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Weighted composite of other subtests |
++----------------------------+------------------+----------------------------------------------------------------------------------------------------------------+
+
+## Exercise
+
+```{r start_tidyverse}
+library(tidyverse)
+```
+
+Start by reading each of the four CSV files into separate tibbles.
+
+```{r read_data_exercise}
+# TODO: 
+# Load diagnosis.csv into a tibble called `diagnosis_df`
+# Load groups.csv into a tibble called `groups_df`
+# Load participants.csv into a tibble called `participants_df`
+# Load test_results.csv into a tibble called `test_results_df`
+# YOUR CODE BELOW
+
+
+
+```
+
+Take a look at your four tibbles. Notice each row in all of them represent a participant, and each participant has a unique identifier (`participant_id`). This means, we can join the four tibbles into a single tibble using the participant identifiers.
+
+We'll use an outer join (`full_join()`), but it actually doesn't matter in this example because inner, left, or, right joins would yield the same result. All four tibbles contain the same participants.
+
+```{r join_data_exercise}
+# TODO: 
+# Join the four tibbles into a single tibble called `experiment_data_df`
+# Use `participant_id` as the key for the full join
+# Inspect the tibble after completing the join
+# YOUR CODE BELOW
+
+
+
+```
+
+Save your results to a CSV file to `../data/experimental_data.csv`. You'll need it for the next exercise.
+
+```{r}
+# TODO: Save experiment_data_df to ../data/experimental_data.csv
+
+
+```
