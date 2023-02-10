@@ -30,7 +30,7 @@ Now that we've verified that our groups were randomly assigned, it's time to do 
 | `processing_speed_gain`    | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Matching Subtest              |
 | `working_memory_gain`      | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Numbers Reversed Subtest             |
 | `long_term_memory_gain`    | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Visual Auditory 1 Learning Subtest   |
-| `iq_gain`                  | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Weighted composite of other subtests |
+| `iq_gain`                  | Improvement in Woodcock III Test of Cognitive Abilities after experiment: Weighted Composite of Other Subtests |
 
 Since all these variables are continuous, one way to do this is to use [Two Sample t-tests](https://www.statology.org/two-sample-t-test/) (similar to how we verified age wasn't significantly different between the experimental groups). The downside of that is running multiple tests like this increases the probability of making a [Type I error](https://www.simplypsychology.org/type_I_and_type_II_errors.html).
 
