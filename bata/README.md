@@ -36,4 +36,4 @@ Before you begin, we recommend review the research paper to familiarize yourself
 
 Visser, Mirjam, Valentin Gattol, and Rosan Van der Helm. 2015. "Communicating Sustainable Shoes to Mainstream Consumers: The Impact of Advertisement Design on Buying Intention" Sustainability 7, no. 7: 8420-8436. <https://doi.org/10.3390/su7078420> <https://www.mdpi.com/2071-1050/7/7/8420>
 
-Visser, M., Gattol, V., & van der Helm, R. 2021. Data underlining publication; Communicating sustainable shoes to mainstream consumers:the impact of advertising design on buying intention. doi: 10.4121/14686680.v1
+Visser, M., Gattol, V., & van der Helm, R. 2021. Data underlining publication; Communicating sustainable shoes to mainstream consumers:the impact of advertising design on buying intention. doi: 10.4121/14686680.v1 <https://data.4tu.nl/articles/dataset/Data_underlining_publication_Communicating_sustainable_shoes_to_mainstream_consumers_the_impact_of_advertising_design_on_buying_intention/14686680>
