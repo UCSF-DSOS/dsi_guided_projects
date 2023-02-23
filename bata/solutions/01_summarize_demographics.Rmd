@@ -1,0 +1,148 @@
+---
+title: "Summarize Demographics"
+output: html_notebook
+---
+
+Before you begin, we recommend reviewing the [research paper](https://www.mdpi.com/2071-1050/7/7/8420) up to the *Results* section, and pay close attention to *3.1 Participants*. This will give you an overview of the experiment that was run to generate the data in this project.
+
+# Preparing the Data
+
+The data we're using is stored at `../data/study_data.csv`. Here is a link to the [original source of the data](https://data.4tu.nl/articles/dataset/Data_underlining_publication_Communicating_sustainable_shoes_to_mainstream_consumers_the_impact_of_advertising_design_on_buying_intention/14686680).
+
+## Exercise
+
+```{r start_tidyverse}
+library(tidyverse)
+```
+
+Before you begin, take a quick peak at the data files in Excel or another spreadsheet application. Notice how there are missing values coded as `#NULL!`. Let's load our data into a tibble called `study_data_df`, making sure to code missing values as `NA`. *Hint: View the documentation for the `read_csv()` function (`?read_csv`) and find the argument used to specify missing values.*
+
+```{r read_data_exercise}
+# TODO: 
+# Load study_data.csv into a tibble called `study_data_df`
+# Be sure that "#NULL!" and "" are coded as NA values
+# YOUR CODE BELOW
+study_data_df <- read_csv("../data/study_data.csv", na = c("", "#NULL!"))
+study_data_df
+```
+
+If you completed the exercise correctly, you should have a 200 x 73 tibble. We don't need all of the columns in this data, and the only ones we need are:
+
++--------------------------+------------------------------------------------------------------------------------------+
+| Column                   | Description                                                                              |
++==========================+==========================================================================================+
+| `IV1_lay`                | The *layout* independent variable. The possible values are:                              |
+|                          |                                                                                          |
+|                          | 1.  Red Layout                                                                           |
+|                          |                                                                                          |
+|                          | 2.  Green (Eco-Conscious) Layout                                                         |
++--------------------------+------------------------------------------------------------------------------------------+
+| `IV2_ben`                | The *benefit* independent variable. The possible values are:                             |
+|                          |                                                                                          |
+|                          | 1.  Personal Benefit                                                                     |
+|                          |                                                                                          |
+|                          | 2.  Environmental Benefit                                                                |
++--------------------------+------------------------------------------------------------------------------------------+
+| `IV3_her`                | The *heritage* independent variable. The possible values are:                            |
+|                          |                                                                                          |
+|                          | 1.  Local (Dutch) Heritage                                                               |
+|                          |                                                                                          |
+|                          | 2.  Global Heritage                                                                      |
++--------------------------+------------------------------------------------------------------------------------------+
+| `BI_rec`                 | The *buying intention* dependent variable. The possible values are:                      |
+|                          |                                                                                          |
+|                          | 1.  I will definitely not buy                                                            |
+|                          |                                                                                          |
+|                          | 2.  I will probably not buy                                                              |
+|                          |                                                                                          |
+|                          | 3.  I might buy                                                                          |
+|                          |                                                                                          |
+|                          | 4.  I will probably buy                                                                  |
+|                          |                                                                                          |
+|                          | 5.  I will definitely buy                                                                |
++--------------------------+------------------------------------------------------------------------------------------+
+| `gender`                 | The gender of the participant. The possible values are:                                  |
+|                          |                                                                                          |
+|                          | 0.  No Response                                                                          |
+|                          | 1.  Male                                                                                 |
+|                          | 2.  Female                                                                               |
+|                          |                                                                                          |
+|                          | Missing values also represent participants who did not provide a response in the survey. |
++--------------------------+------------------------------------------------------------------------------------------+
+| `age`                    | The age of the participant.                                                              |
++--------------------------+------------------------------------------------------------------------------------------+
+| `Bata_brand_famillarity` | The gender of the participant. The possible values are:                                  |
+|                          |                                                                                          |
+|                          | 0.  No Response                                                                          |
+|                          | 1.  Familiar with Bata                                                                   |
+|                          | 2.  Not Familiar with Bata                                                               |
+|                          |                                                                                          |
+|                          | Missing values also represent participants who did not provide a response in the survey. |
++--------------------------+------------------------------------------------------------------------------------------+
+
+Update the `study_data_df` tibble by selecting just the columns listed above:
+
+```{r select_data_exercise}
+# TODO: 
+# Select IV1_lay, IV2_ben, IV3_her, BI_rec, gender, age, and Bata_brand_famillarity from study_data_df
+# YOUR CODE BELOW
+study_data_df <- study_data_df %>%
+  select(
+    IV1_lay,
+    IV2_ben,
+    IV3_her,
+    BI_rec,
+    gender,
+    age,
+    Bata_brand_famillarity
+  )
+
+study_data_df
+```
+
+# Summarize Participant Information
+
+Here are some facts about the participants from the paper (*3.1 Participants*) .
+
+> "The mean age was 24 years (SD~age~ = 9) and 46% were women. Most of the participants (76%) were unfamiliar with Bata before the experiment."
+
+Let's verify these stats.
+
+## Exercise
+
+Calculate the mean and standard deviation of age.
+
+```{r validate_age}
+# TODO: 
+# Calculate the mean and standard deviation of the age columns
+# YOUR CODE BELOW
+study_data_df %>%
+  summarize(
+    mean_age = mean(age, na.rm = TRUE),
+    sd_age = sd(age, na.rm = TRUE)
+  )
+```
+
+Calculate the proportion of participants for each gender response (including missing values).
+
+```{r validate_gender}
+# TODO: 
+# Calculate the proportion of participants for each gender response (including missing values)
+# YOUR CODE BELOW
+study_data_df %>%
+  group_by(gender) %>%
+  summarize(proportion = n()/nrow(study_data_df))
+```
+
+Calculate the proportion of participants for each response of Bata brand familiarity (excluding missing values). *Hint: You will can continue to `mutate()` your tibble after applying `group_by()` and `summarize()`*.
+
+```{r validate_brand_familiarity}
+# TODO: 
+# Calculate the proportion of participants for each response of Bata brand familiarity (excluding missing values)
+# YOUR CODE BELOW
+study_data_df %>%
+  drop_na(Bata_brand_famillarity) %>%
+  group_by(Bata_brand_famillarity) %>%
+  summarize(proportion = n()) %>%
+  mutate(proportion = proportion / sum(proportion))
+```
