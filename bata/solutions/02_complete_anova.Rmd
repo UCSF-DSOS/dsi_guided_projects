@@ -1,0 +1,35 @@
+---
+title: "Testing for Significant Differences in Response Variables"
+output: html_notebook
+---
+
+# Testing for Significant Differences in Response Variables
+
+We recommend completing and running the code in Summarize Demographics *(01_summarize_demographics.Rmd)* before beginning this exercise. Otherwise, run the code chunk below.
+
+```{r source_required_scripts, include=FALSE}
+source("../scripts/01_summarize_demographics.R")
+```
+
+In addition, you should review the *Results* section of the [research paper](https://rdcu.be/c3NWc) before beginning. Pay close attention to *4.2. The Impact of Layout, Benefit Type and Heritage on Buying Intention*.
+
+In this notebook, we'll reproduce the results in *4.2. The Impact of Layout, Benefit Type and Heritage on Buying Intention*.
+
+## Exercise
+
+We'll use a [3-Way ANOVA test](https://www.statology.org/three-way-anova/). To run a 3-Way ANOVA test in R, you'll use the `aov()` and `summary.aov()` functions. Look up the documentation for the `aov()` and `summary.aov()` function, and perform ANOVA with buying intention as a function of the layout, benefit, and heritage independent variables.
+
+```{r test_anova}
+# TODO: 
+# Complete ANOVA test with buying intention as a function of the layout, benefit, and heritage independent variables
+# Display a summary of the results
+# YOUR CODE BELOW
+anova_test <- aov(
+  BI_rec ~ IV1_lay * IV2_ben * IV3_her,           
+  data = study_data_df
+)
+
+summary.aov(anova_test)
+```
+
+Which main effect and interactions were significant at the 10 percent significance level? Your results should match those described in the paper.

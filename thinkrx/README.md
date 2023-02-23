@@ -29,7 +29,7 @@ Before you begin, we recommend review the research paper to familiarize yourself
 
 1.  Download the entire *dsi_guided_projects* directory as a zip file from GitHub.
 2.  Open the *thinkrx.Rproj* file (located in the *thinkrx* folder) in RStudio.
-3.  Make sure the `renv` package is installed, and run `renv:restore()` in the RStudio Console.
+3.  Make sure the `tidyverse` package is installed.
 4.  Open one of the R markdown notebooks in the *exercises* folder and follow the instructions there to begin the exercise. We recommend viewing the R Markdown notebooks in [visual mode](https://rstudio.github.io/visual-markdown-editing/).
 5.  Once you complete an exercise, you can view its solution by opening the R markdown notebook in the *solutions* folder.
 
