@@ -3,7 +3,7 @@
 In this project, you will reproduce aspects of the research conducted in the following research paper:
 
 |                                                                                                                                                                                                                                                                                                    |
-|------------------------------------------------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Visser, Mirjam, Valentin Gattol, and Rosan Van der Helm. 2015. "Communicating Sustainable Shoes to Mainstream Consumers: The Impact of Advertisement Design on Buying Intention" Sustainability 7, no. 7: 8420-8436. <https://doi.org/10.3390/su7078420> <https://www.mdpi.com/2071-1050/7/7/8420> |
 
 This guided project will utilize a modified version of the original data from this research, which was made available to the public domain through the [4TU.ResearchData](https://data.4tu.nl/) repository.
